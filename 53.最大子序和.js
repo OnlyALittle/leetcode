@@ -39,8 +39,38 @@ var maxSubArray3 = function(nums) {
  * @return {number}
  */
 var maxSubArray = function(nums) {
+    var subMax = function(left, right) {
+        if(left>=right){
+            return nums[left];
+        }
+    
+        let mid = left + Math.floor(( right - left ) / 2);
+
+        let leftMax = subMax(left, mid);
+        let rightMax = subMax(mid + 1, right);
+
+        // zhongjian
+        let leftSum = -Infinity;
+        let rightSum = -Infinity;
+        let sum = 0;
+        for(let i=mid; i>=left;i--) {
+            sum += nums[i];
+            leftSum = Math.max(leftSum, sum);
+        }
+        sum = 0;
+        for(let i=mid+1; i<=right; i++) {
+            sum += nums[i];
+            rightSum = Math.max(rightSum, sum);
+        }
+        
+        return Math.max(leftMax, Math.max((leftSum + rightSum), rightMax));
+    };
+
+    return subMax(0, nums.length-1);   
 };
+
 // @lc code=end
 
 console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+console.log(maxSubArray([1,2]))
 
