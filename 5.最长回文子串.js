@@ -89,7 +89,7 @@ var longestPalindrome = function(s) {
 	let end = 0;
 	let maxs = [];//存放每一个点的最大回文
 	let center = -1;
-	let right = -1;
+	let right = -1; // 中心扩散右侧指针
 
 	for(let i = 0; i < temp.length; i++) {
 		let maxLen;
