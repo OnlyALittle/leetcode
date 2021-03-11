@@ -10,6 +10,7 @@
  * @return {number}
  */
 var rob = function(nums) {
+	// Math.max(first + nums[i], second);
 	let N = nums.length;
 	if(N <= 1) return nums[0] || 0;
 	let first = nums[0], second = Math.max(nums[0], nums[1])
