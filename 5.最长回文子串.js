@@ -148,3 +148,4 @@ console.log('res:', longestPalindrome('aaaa'))
 console.log('res:', longestPalindrome('aacabdkacaa'))
 console.log('res:', longestPalindrome('ccc'))
 console.log('res:', longestPalindrome('ccd'))
+
