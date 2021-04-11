@@ -17,30 +17,26 @@
  * @return {number[][]}
  */
 var zigzagLevelOrder = function(root) {
-    let res = [];
     if (!root) return [];
-    let nodeStack = [root];
-    let toLeft = false;
+    let res = [[root.val]];
+    let type = 0;
+    let stack = [root]
+    let temp = [];
+    while (stack.length) {
+        let node = stack.shift();
+        node.left && temp.push(node.left)
+        node.right && temp.push(node.right)
 
-    while(nodeStack.length) {
-        let temp = [];
-        let nextStack = [];
-        while(nodeStack.length) {
-            let node;
-            if (toLeft) {
-                node = nodeStack.pop();
-                node.right && nextStack.unshift(node.right)
-                node.left && nextStack.unshift(node.left)
+        if (stack.length === 0 && temp.length > 0) {  
+            if (type % 2 === 1) {
+                res.push(temp.map(item => item.val));
             } else {
-                node = nodeStack.shift();
-                node.left && nextStack.push(node.left)
-                node.right && nextStack.push(node.right)
+                res.push(temp.map(item => item.val).reverse());
             }
-            temp.push(node.val)
+            type++;
+            stack = temp;
+            temp = []
         }
-        toLeft = !toLeft;
-        res.push(temp);
-        nodeStack = nextStack;
     }
     return res;
 };
@@ -53,12 +49,18 @@ function TreeNode(val, left, right) {
  }
  
  
- let test1 = new TreeNode(
+let test1 = new TreeNode(
     3, 
     new TreeNode(9, new TreeNode(1), new TreeNode(3)),
     new TreeNode(20, new TreeNode(15), new TreeNode(7))
- )
-
- console.log(zigzagLevelOrder(test1))
- console.log(zigzagLevelOrder())
+)
+let test2 = new TreeNode(
+    1, 
+    new TreeNode(2, new TreeNode(4), new TreeNode(5)),
+    new TreeNode(3)
+)
  
+ console.log(zigzagLevelOrder2(test1))
+ console.log(zigzagLevelOrder2(test2))
+ console.log(zigzagLevelOrder2())
+

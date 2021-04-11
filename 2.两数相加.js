@@ -65,4 +65,3 @@ var addTwoNumbers = function(l1, l2) {
 	return prev.next;
 };
 // @lc code=end
-
