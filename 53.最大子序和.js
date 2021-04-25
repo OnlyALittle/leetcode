@@ -49,7 +49,7 @@ var maxSubArray = function(nums) {
         let leftMax = subMax(left, mid);
         let rightMax = subMax(mid + 1, right);
 
-        // zhongjian
+        // 考虑最大自序包括了mid值
         let leftSum = -Infinity;
         let rightSum = -Infinity;
         let sum = 0;
@@ -71,6 +71,6 @@ var maxSubArray = function(nums) {
 
 // @lc code=end
 
+
 console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
 console.log(maxSubArray([1,2]))
-

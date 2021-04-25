@@ -23,6 +23,8 @@ var getIntersectionNode = function(headA, headB) {
 	
 	let ANode = headA;
 	let BNode = headB;
+	// A 、B长度同不同都无所谓
+	// A走完了就开始走B，B走完走A，最终他们一定会相逢
 
 	while (ANode !== BNode) {
 		ANode = ANode === null ? headB : ANode.next;

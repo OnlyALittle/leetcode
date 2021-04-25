@@ -1,4 +1,3 @@
-
 // 快排，每次循环将大小的分列为左右两边
 var quickSort = function(nums) {
 	if (nums.length < 2) return nums;
@@ -83,3 +82,21 @@ var bubbleSort = function(arr) {
 
 let temp1 = [1,5,2,8,21,5,3,4, 0, 11];
 console.log(quickSort(temp1))
+
+
+function in() {
+	function callback(e) {
+		console.log(123, e)
+	}
+	let dom = document.querySelector("#app > div > div.co-home-center > div > div.product-time > span")
+
+	// 创建一个观察器实例并传入回调函数
+	const observer = new MutationObserver(callback);
+	
+	// 以上述配置开始观察目标节点
+	observer.observe(dom, {
+		childList: true
+	});
+
+	
+}
