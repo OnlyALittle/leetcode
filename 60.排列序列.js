@@ -32,7 +32,7 @@ var getPermutation = function(n, k) {
 			let itemCount = sums[N - 2]; // 在少一个数的话，有几种可能性
 			// let needCount = 1; // 出现在第几种组合中
 			// while (itemCount * needCount < cK) needCount++;
-			let needCount = Math.ceil(cK / itemCount);
+			let needCount = Math.ceil(cK / itemCount); // 需要几组
 			let temp = `${data.splice(needCount - 1, 1)}`;
 			let newCk = cK % itemCount;
 			return temp + search(data, newCk === 0 ? itemCount : newCk);
@@ -40,7 +40,8 @@ var getPermutation = function(n, k) {
 		return ''
 	}
 	let count = sums.findIndex(item => k <= item) + 1; // 需要几个数字才能凑够可能性
-	let temp = data.splice(0, n - count).join('')
+	let temp = data.splice(0, n - count).join('') 
+	// n=5, k=2;只需要两个数就可以，因此前3个数不动，只在后两个上面去做search
 	temp += search(data, k);
 	return temp
 };

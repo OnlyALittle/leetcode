@@ -1,3 +1,30 @@
+var climbStairsPrintRes = function(n) {
+    // f(x) = f(x - 1) + f(x - 2)
+	let x = 1;
+    let y = 1;
+    let temp;
+    let xRes = [''];
+    let yRes = ['1'];
+    let tempRes;
+
+    for(let i = 2; i<= n; i++) {
+        temp = x;
+        x = y;
+        y = temp + y;
+        tempRes = [].concat(xRes);
+        xRes = yRes
+        let t1 = tempRes.map(item => {
+			return `${item}2`;
+		})
+        let t2 = yRes.map(item => {
+			return `${item}1`;
+		})
+		yRes = t1.concat(t2)
+    }
+    console.log(yRes)
+    return y
+};
+
 /*
  * @lc app=leetcode.cn id=70 lang=javascript
  *

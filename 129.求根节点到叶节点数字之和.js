@@ -36,6 +36,3 @@ var sumNumbers = function(root) {
 
 };
 // @lc code=end
-
-
-

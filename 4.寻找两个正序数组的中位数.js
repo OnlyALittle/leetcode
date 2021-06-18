@@ -59,6 +59,7 @@ var findMedianSortedArrays = function(nums1 = [], nums2 = []) {
 		if (nums1[i] > nums2[j]) {
 			// 移动的是2的数组
 			// 1的参数保持不变，2的start加上偏移 长度减去偏移，k值减少删去的值
+			// 如果2不够了
 			let extraNum = Math.max(halfK - len2, 0)
 			return getData(start1 + extraNum, len1 - extraNum, start2 + halfK, Math.max(len2 - halfK, 0), k - halfK);
 		} else {
@@ -75,7 +76,7 @@ var findMedianSortedArrays = function(nums1 = [], nums2 = []) {
 		return getData(0, nums1.length, 0, nums2.length, halfNum + 1);
 	} else {
 		let right = getData(0, nums1.length, 0, nums2.length, halfNum + 1);
-		let left = getData(0, nums1.length, 0, nums2.length, halfNum); 2
+		let left = getData(0, nums1.length, 0, nums2.length, halfNum);
 		return (left + right) / 2;
 	}
 };

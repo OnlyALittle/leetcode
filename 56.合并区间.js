@@ -44,8 +44,9 @@ var merge = function(intervals) {
 	})
 
 	let res = [];
-	let max = sortList[0][1];
 	let min = sortList[0][0];
+	let max = sortList[0][1];
+
 	sortList.forEach(i => {
 		if (i[0] > max) {
 			res.push([min,max]);

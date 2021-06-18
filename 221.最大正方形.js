@@ -12,6 +12,7 @@
 var maximalSquare = function(matrix) {
 	let N = matrix.length;
 	let M = matrix[0].length;
+	// 以i，j为右下角坐标时的边长
 	let dp = Array.from(new Array(N), () => new Array(M).fill(1));
 
 	function isSquare(i, j) {

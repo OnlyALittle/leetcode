@@ -22,6 +22,7 @@ var detectCycle = function(head) {
 
 	let fast = head;
 	let slow = head;
+	// fast 指针走两步，slow走一步，直到相遇或到底
 	while (1) {
 		if (!fast || !fast.next) return null;
 		slow = slow.next;
@@ -30,6 +31,7 @@ var detectCycle = function(head) {
 	}
 	fast = head;
 
+	// fast 从头走，直到相遇
 	while (slow !== fast) {
 		slow = slow.next;
 		fast = fast.next;

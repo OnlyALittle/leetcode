@@ -15,8 +15,10 @@ var findCircleNum = function(isConnected) {
 	let status = Array.from(new Array(N), (item, index) => index);
 
 	function union(i, j) {
+		// 找i、j的根
 		let iRoot = find(i);
 		let jRoot = find(j);
+		// 根不同则合并
 		if (iRoot !== jRoot) status[iRoot] = jRoot;
 		else status[jRoot] = iRoot;
 	}
@@ -28,7 +30,7 @@ var findCircleNum = function(isConnected) {
 
 	for (let i = 0; i < N; i++) {
 		for (let j = i + 1; j < N; j++) {
-			if (i !== j && isConnected[i][j] === 1) union(i, j);
+			if (isConnected[i][j] === 1) union(i, j);
 		}
 	}
 

@@ -1,3 +1,26 @@
+var maxSubArrayGetValue = function(nums) {
+    let ans = nums[0];
+    let sum = 0;
+    let res = [0, 0];
+    let temp = [0, 0];
+    for (let i = 0 ; i < nums.length; i++) {
+        const num = nums[i];
+        if(sum > 0) {
+            sum += num;
+        } else {
+            // 需要重新计算
+            sum = num;
+            temp[0] = i;
+        }
+        temp[1] = i;
+        if (sum > ans) {
+            ans = sum;
+            res = temp;
+        }
+    }
+    console.log(nums.slice(res[0], res[1] + 1))
+    return ans;
+};
 var maxSubArray2 = function(nums) {
     let mapList = new Array(nums.length);
     mapList[0] = nums[0]

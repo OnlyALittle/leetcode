@@ -29,6 +29,7 @@
 			}
 
 			if (sNums[j] + sNums[i] > 0) {
+				// 左边两个数相加已经大于0，往下无解了
 				break;
 			} else if (res > 0) {
 				k--;

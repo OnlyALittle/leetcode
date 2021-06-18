@@ -15,7 +15,8 @@ var checkInclusion = function(s1, s2) {
 	let N2 = s2.length
 	if (N1 > N2) return false;
 	
-	let m1 = new Array(26).fill(0), m2 = new Array(26).fill(0);
+	let m1 = new Array(26).fill(0), 
+		m2 = new Array(26).fill(0);
 	let aCode = 'a'.charCodeAt();
 
 	// 统计s1中的字符
@@ -29,6 +30,8 @@ var checkInclusion = function(s1, s2) {
 		let rightIndex = s2[j].charCodeAt() - aCode
 		m2[rightIndex] ++;
 		// 判断当前值的数量是不是超了
+		//s2[left].charCodeAt() - aCode，判断最左侧的字母数量是不是多
+		// 多了left向右
 		while (
 			left <= j && 
 			m2[s2[left].charCodeAt() - aCode] > m1[s2[left].charCodeAt() - aCode]

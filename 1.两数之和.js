@@ -4,11 +4,6 @@
  * [1] 两数之和
  */
 
- let data = [
-    1,2,6,7,10,8,9
- ]
-
-
 // @lc code=start
 /**
  * @param {number[]} nums
@@ -47,6 +42,10 @@ var twoSum = function(nums, target) {
     return [];
 };
 // @lc code=end
+
+let data = [
+    1,2,6,7,10,8,9
+]
 
 const res = twoSum(data, 7);
 console.log(res);

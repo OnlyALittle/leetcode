@@ -48,7 +48,6 @@ var restoreIpAddresses = function(s) {
 		}
 	}
 
-
 	return loop(s, 1)
 };
 // @lc code=end

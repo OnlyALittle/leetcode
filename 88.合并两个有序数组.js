@@ -13,22 +13,20 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
-	let cur = m + n - 1
-	let i = m - 1;
-	let j = n - 1;
-
-	while (cur >= 0 && j>=0) {
-		let item1 = nums1[i]
-		let item2 = nums2[j]
-
-		if (item1 > item2) {
-			nums1[cur] = item1;
-			i --;
+	let countAll = m + n - 1;
+	let nIndex = n - 1;
+	let mIndex = m - 1;
+	while (countAll >= 0 && nIndex >= 0) {
+		let mStr = nums1[mIndex];
+		let nStr = nums2[nIndex];
+		if (mStr > nStr) {
+			nums1[countAll] = mStr;
+			mIndex--;
 		} else {
-			nums1[cur] = item2;
-			j --;
+			nums1[countAll] = nStr;
+			nIndex--;
 		}
-		cur--;
+		countAll --;
 	}
 };
 // @lc code=end
@@ -39,3 +37,19 @@ merge(nums, 3, [2,5,6], 3)
 merge(nums2, 1, [], 0)
 console.log(nums)
 console.log(nums2)
+
+
+var merge = function(nums1, m, nums2, n) {
+	let countAll = m + n - 1;
+	while (m > 0 || n > 0) {
+		let mStr = nums1[m - 1] || -Infinity;
+		let nStr = nums2[n - 1] || -Infinity;
+		if (mStr > nStr) {
+			nums[countAll - 1] = mStr;
+			m--;
+		} else {
+			nums[countAll - 1] = nStr;
+			n--;
+		}
+	}
+};

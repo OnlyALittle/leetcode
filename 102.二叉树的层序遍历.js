@@ -1,22 +1,4 @@
-/*
- * @lc app=leetcode.cn id=102 lang=javascript
- *
- * [102] 二叉树的层序遍历
- */
-
-// @lc code=start
-/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number[][]}
- */
-var levelOrder = function(root) {
+var levelOrderRecurse = function(root) {
     if (!root) return [];
     let temp = [];
 
@@ -38,6 +20,44 @@ var levelOrder = function(root) {
     }
     getNode([root]);
     return temp;
+};
+/*
+ * @lc app=leetcode.cn id=102 lang=javascript
+ *
+ * [102] 二叉树的层序遍历
+ */
+
+// @lc code=start
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+    if (!root) return [];
+    let res = [];
+    let tempRes = [];
+    let stack = [root];
+    let tempStack = [];
+    while(stack.length) {
+        let item = stack.shift();
+        if(item) tempRes.push(item.val)
+        item.left && tempStack.push(item.left)
+        item.right && tempStack.push(item.right)
+        if (stack.length === 0) {
+            stack = tempStack
+            tempStack = [];
+            res.push(tempRes);
+            tempRes = []
+        }
+    }
+    return res
 };
 // @lc code=end
 

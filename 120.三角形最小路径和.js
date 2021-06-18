@@ -13,10 +13,12 @@ var minimumTotal = function(triangle) {
 	let N = triangle.length;
 	let res = triangle[N -1];
 	for (let i = N - 2; i >= 0; i--) {
+		// 先计算倒数两行的结果，在往上推导
 		for (let j = 0; j < i+1; j++) {
 			res[j] = Math.min(res[j], res[j+1]) + triangle[i][j];
 		}
 	}
+	// 数组第一项就是解
 	return res[0];
 };
 // @lc code=end

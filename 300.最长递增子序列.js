@@ -6,15 +6,9 @@ function getLengthOfLISList(nums) {
 	let dpIndex = [-1];
 	let max = 1;
 	let curIndex = 0;
-	for(let i = 1; i<N;i++) {
+	for(let i = 1; i<N; i++) {
 		let pre = -1; // 这个i最优的前进索引
 		for(let j = 0; j<i;j++) {
-			// if(nums[j] < nums[i]) {
-			// 	if (dp[i] < dp[j] + 1) {
-			// 		pre = j;// 修正前置索引
-			// 	}
-			// 	dp[i] = Math.max(dp[i], dp[j]+1)
-			// }
             if(nums[j] < nums[i] && dp[i] < dp[j] + 1) {
                 pre = j;// 修正前置索引
 				dp[i] = dp[j]+1
@@ -34,16 +28,18 @@ function getLengthOfLISList(nums) {
 		res.push(nums[curIndex]);
 		curIndex = dpIndex[curIndex]
 	}
-	return res.reverse();;
+	return res.reverse();
 }
-
+// [10,9,2,5,3,7,101,18]
 var lengthOfLISSimple = function(nums) {
 	if (!nums.length) return 0;
+	// 到i位置时的递增子串数
 	let dp = new Array(nums.length).fill(1);
+	
 	let max = 1;
 	for (let i = 0; i < nums.length; i++) {
 		for (let j = 0; j < i; j++) {
-			if (nums[j] < nums[i]){
+			if (nums[j] < nums[i]) {
                 // 考虑；i本身的值，和考虑由j进一步的到的值
                 // i本身的值可能是之前的j进一步缓存下的值
 				dp[i] = Math.max(dp[j]+1, dp[i])
@@ -64,6 +60,7 @@ var lengthOfLISSimple = function(nums) {
  * @param {number[]} nums
  * @return {number}
  */
+// [10,9,2,5,3,7,101,18]
 var lengthOfLIS = function(nums) {
     let len = 1, n = nums.length
     if (n === 0) return 0

@@ -10,23 +10,24 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-	let i = 0,
-		j = 0;
-	let map = {};
+	let i = 0, j = 0;
 	let max = 0;
+	let map = {};
+	let N = s.length;
 
-	while (j < s.length) {
-		let str = s[j];
+	while (i < N) {
+		const str = s[i];
 		let prevIndex = map[str];
-		map[str] = j
+		map[str] = i;
 		if (prevIndex !== undefined) {
-			max = Math.max(max, j - i)
-			i = Math.max(i, prevIndex + 1);
+			// 已经存在过了
+			max = Math.max(max, i - j);
+			j = Math.max(j, prevIndex + 1);
 		}
-		j++;
+		i++;
 	}
-	max = Math.max(max, j - i)
-	return max;
+	max = Math.max(max, i - j);
+	return max
 };
 // @lc code=end
 

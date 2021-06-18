@@ -29,7 +29,7 @@ DoubleLinkNode.prototype.add = function(node) {
 	this.head.next = node;
 }
 
-DoubleLinkNode.prototype.remove = function(node) {
+DoubleLinkNode.prototype.remove = function() {
 	const prevNode = this.tail.pre;
 	prevNode.pre.next = this.tail;
 	this.tail.pre = prevNode.pre;
